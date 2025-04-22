@@ -46,8 +46,6 @@ services:
         build: ./app
         restart: unless-stopped
         container_name: app
-        expose:
-            - 9000
         environment:
             - APP_ENV=production
             - APP_DEBUG=false
