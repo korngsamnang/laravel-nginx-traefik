@@ -23,7 +23,7 @@ build:
 
 deploy:
   stage: deploy
-  needs: [ "build and push" ]
+  needs: [ "build" ]
   before_script:
   - chmod 400 "$SSH_PRIVATE_KEY"
   script:
