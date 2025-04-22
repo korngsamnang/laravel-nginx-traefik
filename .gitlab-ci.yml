@@ -19,7 +19,7 @@ build:
   - echo "$CI_REGISTRY_PASSWORD" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   - docker build -t $IMAGE_NAME:$IMAGE_TAG .
   rules:
-  - if: $CI_COMMIT_BRANCH == gitlab-ci
+  - if: $CI_COMMIT_BRANCH == "gitlab-ci"
 
 push:
   stage: push
@@ -33,7 +33,7 @@ push:
   - echo "$CI_REGISTRY_PASSWORD" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   - docker push $IMAGE_NAME:$IMAGE_TAG
   rules:
-  - if: $CI_COMMIT_BRANCH == gitlab-ci
+  - if: $CI_COMMIT_BRANCH == "gitlab-ci"
 
 deploy:
   stage: deploy
@@ -54,4 +54,4 @@ deploy:
       IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG docker-compose up -d
     "
   rules:
-  - if: $CI_COMMIT_BRANCH == gitlab-ci
+  - if: $CI_COMMIT_BRANCH == "gitlab-ci"
