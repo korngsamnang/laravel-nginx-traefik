@@ -1,6 +1,6 @@
 services:
     traefik:
-        image: traefik:v2.10
+        image: traefik:v3.3
         container_name: traefik
         restart: always
         ports:
@@ -37,13 +37,13 @@ services:
             - webnet
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.nginx.rule=Host(`localhost`)"
+            - "traefik.http.routers.nginx.rule=Host(`todayinternet.systems`)"
             - "traefik.http.routers.nginx.entrypoints=websecure"
             - "traefik.http.routers.nginx.tls.certresolver=letsencrypt"
             - "traefik.http.services.nginx.loadbalancer.server.port=80"
 
     app:
-        build: ./app
+        image: "${IMAGE_NAME}:${IMAGE_TAG}"
         restart: unless-stopped
         container_name: app
         environment:
