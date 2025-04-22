@@ -8,6 +8,7 @@ services:
             - "443:443"
         volumes:
             - "/var/run/docker.sock:/var/run/docker.sock:ro"
+            - "letsencrypt:/letsencrypt"
         networks:
             - webnet
         command:
@@ -15,6 +16,13 @@ services:
             - "--providers.docker=true"
             - "--providers.docker.exposedbydefault=false"
             - "--entrypoints.web.address=:80"
+            - "--entrypoints.websecure.address=:443"
+            - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+            - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+            - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+            - "--certificatesresolvers.letsencrypt.acme.email=korngsamnang168@gmail.com"
+            - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+            - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
 
     nginx:
         image: nginx:alpine
@@ -30,6 +38,8 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.nginx.rule=Host(`localhost`)"
+            - "traefik.http.routers.nginx.entrypoints=websecure"
+            - "traefik.http.routers.nginx.tls.certresolver=letsencrypt"
             - "traefik.http.services.nginx.loadbalancer.server.port=80"
 
     app:
@@ -76,3 +86,4 @@ networks:
 
 volumes:
     postgres_data:
+    letsencrypt:
