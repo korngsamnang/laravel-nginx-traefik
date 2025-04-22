@@ -28,6 +28,8 @@ deploy:
   - chmod 400 "$SSH_PRIVATE_KEY"
   script:
   - |
+    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ubuntu@52.221.190.129 "mkdir -p $PROJECT_DIR/nginx"
+
     scp -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" \
       docker-compose.yml \
       nginx/nginx.conf \
