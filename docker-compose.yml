@@ -32,7 +32,7 @@ services:
             - ./nginx.conf:/etc/nginx/conf.d/default.conf
             # - app_code:/var/www
             # - public:/var/www/public
-            - static_assets:/var/www/public
+            - static_assets:/var/www
         depends_on:
             - app
         networks:
