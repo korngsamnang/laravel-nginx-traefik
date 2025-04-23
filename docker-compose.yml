@@ -30,9 +30,9 @@ services:
         restart: always
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/default.conf
-            # - app_code:/var/www
+            - app_code:/var/www
             # - public:/var/www/public
-            - static_assets:/var/www
+            # - static_assets:/var/www
         depends_on:
             - app
         networks:
@@ -85,5 +85,5 @@ networks:
 volumes:
     postgres_data:
     letsencrypt:
-        # app_code:
-    static_assets:
+    app_code:
+    # static_assets:
