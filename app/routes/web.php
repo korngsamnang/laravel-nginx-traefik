@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return "<h1>About Us</h1><p>This is the About page.</p>";
+    return "<h1>About Us</h1><p>This is the About page😍.</p>";
 });
