@@ -90,3 +90,6 @@ volumes:
         driver: local
         driver_opts:
             type: tmpfs # Clears on reboot
+            device: tmpfs
+            o: size=100M # Size of the tmpfs volume
+
