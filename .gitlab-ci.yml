@@ -36,6 +36,7 @@ deploy:
     ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ubuntu@52.221.190.129 "
       cd $PROJECT_DIR &&
       echo \"$CI_REGISTRY_PASSWORD\" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY &&
+      docker volume rm ${CI_PROJECT_NAME}_app_code || true &&
       IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG docker-compose pull &&
       IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG docker-compose up -d
     "
