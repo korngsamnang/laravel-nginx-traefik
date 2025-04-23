@@ -1,34 +1,73 @@
+# .git
+# .gitignore
+
+# node_modules
+# npm-debug.log
+# yarn.lock
+# package-lock.json
+
+# composer.phar
+
+# /storage/*
+# /bootstrap/cache/*
+# /vendor/*
+# /node_modules/*
+# /public/storage
+
+# .env
+# .env.local
+# .env.testing
+# .env.example
+
+# .vscode
+# .idea
+# *.sublime-workspace
+# *.sublime-project
+
+# .dockerignore
+# Dockerfile
+# *.log
+# *.md
+
+# /tests
+# /phpunit.xml
+# /phpunit.xml.dist
+
+
+# Git & editor
 .git
 .gitignore
+.vscode
+.idea
+*.sublime-*
 
+# Node & build artifacts
 node_modules
 npm-debug.log
 yarn.lock
 package-lock.json
 
+# Composer PHAR & tests
 composer.phar
-
-/storage/*
-/bootstrap/cache/*
-/vendor/*
-/node_modules/*
-/public/storage
-
-.env
-.env.local
-.env.testing
-.env.example
-
-.vscode
-.idea
-*.sublime-workspace
-*.sublime-project
-
-.dockerignore
-Dockerfile
-*.log
-*.md
-
 /tests
 /phpunit.xml
 /phpunit.xml.dist
+
+# Env & logs
+.env
+.env.*
+*.log
+
+# Markdown/docs/docker
+*.md
+Dockerfile
+.dockerignore
+
+# Ignore vendor — you install it in container
+/vendor
+
+# Storage & bootstrap — don't ignore the folders themselves
+!storage/
+!storage/.gitkeep
+!bootstrap/cache/
+!bootstrap/cache/.gitkeep
