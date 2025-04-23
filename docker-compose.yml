@@ -58,8 +58,6 @@ services:
             - DB_DATABASE=laravel
             - DB_USERNAME=laravel
             - DB_PASSWORD=your_secure_password
-        volumes:
-            - app_code:/var/www
         networks:
             - webnet
 
