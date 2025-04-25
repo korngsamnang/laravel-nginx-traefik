@@ -31,9 +31,9 @@ deploy:
     scp -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" \
       docker-compose.yml \
       nginx/nginx.conf \
-      ubuntu@52.221.190.129:"$PROJECT_DIR/"
+      ubuntu@47.128.249.195:"$PROJECT_DIR/"
 
-    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ubuntu@52.221.190.129 "
+    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ubuntu@47.128.249.195 "
       cd $PROJECT_DIR &&
       echo \"$CI_REGISTRY_PASSWORD\" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY &&
       IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG docker-compose pull &&
